@@ -1,3 +1,5 @@
+package list;
+
 public interface Stark<E> {
     int getSize();
     boolean isEmpty();

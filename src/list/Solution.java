@@ -1,5 +1,10 @@
+package list;
+
 import java.util.Stack;
 
+/**
+ * leetCode的第20题
+ */
 public class Solution {
     public boolean isValid(String s){
         Stack<Character> stack = new Stack<>();

@@ -1,3 +1,5 @@
+package list;
+
 public interface Queue<E> {
 
     /**

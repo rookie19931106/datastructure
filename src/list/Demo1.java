@@ -1,3 +1,5 @@
+package list;
+
 public class Demo1<E> {
 
     private E[] data;

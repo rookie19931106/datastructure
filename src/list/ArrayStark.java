@@ -1,3 +1,5 @@
+package list;
+
 public class ArrayStark<E> implements Stark<E>{
 
     Array<E> array;
@@ -42,7 +44,7 @@ public class ArrayStark<E> implements Stark<E>{
     @Override
     public String toString(){
         StringBuilder res = new StringBuilder();
-        res.append("Stark: ");
+        res.append("list.Stark: ");
         res.append('[');
         for(int i=0;i<array.getSize();i++){
             res.append(array.get(i));
