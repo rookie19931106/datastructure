@@ -1,14 +1,14 @@
 package list;
 
-public class ArrayStark<E> implements Stark<E>{
+public class ArrayStack<E> implements Stack<E> {
 
     Array<E> array;
 
-    public ArrayStark(int capacity){
+    public ArrayStack(int capacity){
         array = new Array<>(capacity);
     }
 
-    public ArrayStark(){
+    public ArrayStack(){
         array=new Array<>();
     }
 
@@ -44,7 +44,7 @@ public class ArrayStark<E> implements Stark<E>{
     @Override
     public String toString(){
         StringBuilder res = new StringBuilder();
-        res.append("list.Stark: ");
+        res.append("list.Stack: ");
         res.append('[');
         for(int i=0;i<array.getSize();i++){
             res.append(array.get(i));

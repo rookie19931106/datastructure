@@ -30,11 +30,14 @@ public class LinkedList<E> {
         }
     }
 
-    private Node head;
+    /**
+     * 为链表添加一个虚拟节点
+     */
+    private Node dummyHead;
     private int size;
 
     public LinkedList(){
-        head=null;
+        dummyHead= new Node(null,null);
         size=0;
     }
 
@@ -46,30 +49,17 @@ public class LinkedList<E> {
         return size==0;
     }
 
-    //在链表头添加新的元素e
-    public void addFirst(E e){
-        Node node=new Node(e);
-        //新的节点的下一个指向现在的头
-        node.next=head;
-        //然后头现在指向新的节点
-        head = node;
-        //简写
-        //head = new Node(e,head);
-        //变大
-        size++;
-    }
+
 
     //在链表的index位置添加一个新的元素e
     //不是一个常用的操作习惯
     public void add(int index,E e){
         if(index<0||index > size){
-            throw new IllegalArgumentException("add failed,Illegal index");
+            throw new IllegalArgumentException("add failed,illegal index");
         }
-        if(index==0){
-            addFirst(e);
-        }else {
-            Node prev = head;
-            for (int i=0;i<index-1;i++){
+
+            Node prev = dummyHead;
+            for (int i=0;i<index;i++){
                 prev = prev.next;
             }
             Node node = new Node(e);
@@ -78,12 +68,92 @@ public class LinkedList<E> {
             //简写
             //prev.next= new Node(e,prev.next);
             size++;
-        }
-
-
     }
+
+    //在链表头添加新的元素e
+    public void addFirst(E e){
+        add(0,e);
+    }
+
     //在链表末尾添加新的元素e
     public void addLast(E e){
+
         add(size,e);
     }
+
+    //获得链表的第index个元素，在链表中不是一个常用的操作，练习用
+    public E get(int index){
+        if(index<0||index >= size){
+            throw new IllegalArgumentException("get failed,illegal index");
+        }
+        Node cur = dummyHead.next;
+        for (int i=0;i<index;i++){
+            cur=cur.next;
+        }
+        return cur.e;
+    }
+
+    public E getLast(){
+        return get(size-1);
+    }
+
+    //修改链表的第index位置的元素
+    public void set(int index,E e){
+        if(index<0||index>=size){
+            throw new IllegalArgumentException("set failed,illegal index");
+        }
+
+        Node cur=dummyHead.next;
+        for (int i=0;i<size;i++){
+            cur=cur.next;
+        }
+        cur.e=e;
+    }
+
+    //在链表中查找指定元素
+    public boolean contains(E e){
+
+        Node cur =dummyHead.next;
+        while (cur!=null){
+            if(cur.e.equals(e)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    @Override
+    public String toString(){
+        StringBuilder res = new StringBuilder();
+
+        Node cur = dummyHead.next;
+        while(cur!=null){
+            res.append(cur+"->");
+            cur=cur.next;
+        }
+        res.append("NULL");
+        return res.toString();
+    }
+
+    //从链表中删除元素，练习用
+    public E remove(int index){
+        if(index < 0 ||index >= size){
+            throw new IllegalArgumentException("remove failed,illegal index");
+        }
+        Node prev = dummyHead;
+        for(int i=0;i<index;i++){
+            prev=prev.next;
+        }
+        Node retNode = prev.next;
+        prev.next=retNode.next;
+        retNode.next=null;
+        size--;
+        return retNode.e;
+    }
+
+    public E removeFirst(){
+      return remove(0);
+    }
+
 }

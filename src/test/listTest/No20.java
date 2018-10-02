@@ -1,11 +1,11 @@
-package list;
+package test.listTest;
 
 import java.util.Stack;
 
 /**
  * leetCode的第20题
  */
-public class Solution {
+public class No20 {
     public boolean isValid(String s){
         Stack<Character> stack = new Stack<>();
         for(int i=0;i<s.length();i++){

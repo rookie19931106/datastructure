@@ -5,7 +5,7 @@ package list;
  */
 public class ArraysTestDemo {
     public static void main(String[] args) {
-        ArrayStark<Integer> stark = new ArrayStark<>();
+        ArrayStack<Integer> stark = new ArrayStack<>();
         for (int i = 0; i < 5; i++) {
             stark.push(i);
             System.out.println(stark);

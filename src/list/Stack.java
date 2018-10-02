@@ -1,6 +1,6 @@
 package list;
 
-public interface Stark<E> {
+public interface Stack<E> {
     int getSize();
     boolean isEmpty();
     void push(E e);
